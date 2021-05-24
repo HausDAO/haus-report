@@ -17,6 +17,7 @@ import { get } from "utils/requests";
 
 const HausOverviewActivity = () => {
   const [bigChartData, setbigChartData] = useState("data1");
+  const [fetchedData, setFetchedData] = useState({});
   const [activeData, setActiveData] = useState({});
 
   useEffect(() => {
@@ -25,36 +26,42 @@ const HausOverviewActivity = () => {
         "https://daohaus-metadata.s3.amazonaws.com/daohaus-report-overview-dao-by-month.json"
       );
 
-      setActiveData({
-        labels: Object.keys(apiData).map((monthYear) => monthYear),
-        datasets: [
-          {
-            label: "daos summoned on xdai",
-            fill: true,
-            borderColor: "#1f8ef1",
-            borderWidth: 2,
-            borderDash: [],
-            borderDashOffset: 0.0,
-            pointBackgroundColor: "#1f8ef1",
-            pointBorderColor: "rgba(255,255,255,0)",
-            pointHoverBackgroundColor: "#1f8ef1",
-            pointBorderWidth: 20,
-            pointHoverRadius: 4,
-            pointHoverBorderWidth: 15,
-            pointRadius: 4,
-            data: Object.keys(apiData).map((monthYear) => apiData[monthYear]),
-          },
-        ],
-      });
+      console.log("apiData", apiData);
+      setFetchedData(apiData);
+      setbigChartData("total");
+      setActiveData(preppedData(apiData.total));
     };
 
     setup();
   }, []);
 
+  const preppedData = (data) => {
+    return {
+      labels: Object.keys(data).map((monthYear) => monthYear),
+      datasets: [
+        {
+          label: "daos summoned on xdai",
+          fill: true,
+          borderColor: "#1f8ef1",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: "#1f8ef1",
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: "#1f8ef1",
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: Object.keys(data).map((monthYear) => data[monthYear]),
+        },
+      ],
+    };
+  };
+
   const setBgChartData = (name) => {
-    const dude = chartExample1[name];
-    console.log("dude", dude);
     setbigChartData(name);
+    setActiveData(preppedData(fetchedData[name]));
   };
 
   return (
@@ -63,7 +70,7 @@ const HausOverviewActivity = () => {
         <Row>
           <Col className="text-left" sm="6">
             <h5 className="card-category">ALL DAOs</h5>
-            <CardTitle tag="h2">Activity</CardTitle>
+            <CardTitle tag="h2">DAOs Summoned</CardTitle>
           </Col>
           <Col sm="6">
             <ButtonGroup
@@ -73,15 +80,15 @@ const HausOverviewActivity = () => {
               <Button
                 tag="label"
                 className={classNames("btn-simple", {
-                  active: bigChartData === "data1",
+                  active: bigChartData === "total",
                 })}
                 color="info"
                 id="0"
                 size="sm"
-                onClick={() => setBgChartData("data1")}
+                onClick={() => setBgChartData("total")}
               >
                 <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  Daos Summoned
+                  Total
                 </span>
                 <span className="d-block d-sm-none">
                   <i className="tim-icons icon-single-02" />
@@ -93,12 +100,12 @@ const HausOverviewActivity = () => {
                 size="sm"
                 tag="label"
                 className={classNames("btn-simple", {
-                  active: bigChartData === "data2",
+                  active: bigChartData === "main",
                 })}
-                onClick={() => setBgChartData("data2")}
+                onClick={() => setBgChartData("main")}
               >
                 <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  Proposals
+                  Mainnet
                 </span>
                 <span className="d-block d-sm-none">
                   <i className="tim-icons icon-gift-2" />
@@ -110,12 +117,29 @@ const HausOverviewActivity = () => {
                 size="sm"
                 tag="label"
                 className={classNames("btn-simple", {
-                  active: bigChartData === "data3",
+                  active: bigChartData === "xdai",
                 })}
-                onClick={() => setBgChartData("data3")}
+                onClick={() => setBgChartData("xdai")}
               >
                 <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  Members
+                  xDai
+                </span>
+                <span className="d-block d-sm-none">
+                  <i className="tim-icons icon-tap-02" />
+                </span>
+              </Button>
+              <Button
+                color="info"
+                id="2"
+                size="sm"
+                tag="label"
+                className={classNames("btn-simple", {
+                  active: bigChartData === "matic",
+                })}
+                onClick={() => setBgChartData("matic")}
+              >
+                <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                  Polygon
                 </span>
                 <span className="d-block d-sm-none">
                   <i className="tim-icons icon-tap-02" />
