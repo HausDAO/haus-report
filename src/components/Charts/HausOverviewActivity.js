@@ -28,8 +28,8 @@ const HausOverviewActivity = () => {
 
       console.log("apiData", apiData);
       setFetchedData(apiData);
-      setbigChartData("total");
-      setActiveData(preppedData(apiData.total));
+      setbigChartData("xdai");
+      setActiveData(preppedData(apiData.xdai));
     };
 
     setup();
@@ -42,13 +42,13 @@ const HausOverviewActivity = () => {
         {
           label: "daos summoned",
           fill: true,
-          borderColor: "#1f8ef1",
+          borderColor: "#4ebd9e",
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          pointBackgroundColor: "#1f8ef1",
+          pointBackgroundColor: "#4ebd9e",
           pointBorderColor: "rgba(255,255,255,0)",
-          pointHoverBackgroundColor: "#1f8ef1",
+          pointHoverBackgroundColor: "#4ebd9e",
           pointBorderWidth: 20,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
@@ -78,22 +78,23 @@ const HausOverviewActivity = () => {
               data-toggle="buttons"
             >
               <Button
+                color="info"
+                id="2"
+                size="sm"
                 tag="label"
                 className={classNames("btn-simple", {
-                  active: bigChartData === "total",
+                  active: bigChartData === "xdai",
                 })}
-                color="info"
-                id="0"
-                size="sm"
-                onClick={() => setBgChartData("total")}
+                onClick={() => setBgChartData("xdai")}
               >
                 <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  Total
+                  xDai
                 </span>
                 <span className="d-block d-sm-none">
-                  <i className="tim-icons icon-single-02" />
+                  <i className="tim-icons icon-tap-02" />
                 </span>
               </Button>
+
               <Button
                 color="info"
                 id="1"
@@ -117,23 +118,6 @@ const HausOverviewActivity = () => {
                 size="sm"
                 tag="label"
                 className={classNames("btn-simple", {
-                  active: bigChartData === "xdai",
-                })}
-                onClick={() => setBgChartData("xdai")}
-              >
-                <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  xDai
-                </span>
-                <span className="d-block d-sm-none">
-                  <i className="tim-icons icon-tap-02" />
-                </span>
-              </Button>
-              <Button
-                color="info"
-                id="2"
-                size="sm"
-                tag="label"
-                className={classNames("btn-simple", {
                   active: bigChartData === "matic",
                 })}
                 onClick={() => setBgChartData("matic")}
@@ -143,6 +127,23 @@ const HausOverviewActivity = () => {
                 </span>
                 <span className="d-block d-sm-none">
                   <i className="tim-icons icon-tap-02" />
+                </span>
+              </Button>
+              <Button
+                tag="label"
+                className={classNames("btn-simple", {
+                  active: bigChartData === "total",
+                })}
+                color="info"
+                id="0"
+                size="sm"
+                onClick={() => setBgChartData("total")}
+              >
+                <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                  Total
+                </span>
+                <span className="d-block d-sm-none">
+                  <i className="tim-icons icon-single-02" />
                 </span>
               </Button>
             </ButtonGroup>
