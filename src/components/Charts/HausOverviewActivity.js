@@ -40,7 +40,7 @@ const HausOverviewActivity = () => {
       labels: Object.keys(data).map((monthYear) => monthYear),
       datasets: [
         {
-          label: "daos summoned on xdai",
+          label: "daos summoned",
           fill: true,
           borderColor: "#1f8ef1",
           borderWidth: 2,
