@@ -15,32 +15,31 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+import OverviewTotals from "views/OverviewTotals.js";
 import Dashboard from "views/Dashboard.js";
 import Dashboard2 from "views/Dashboard2";
 import Icons from "views/Icons.js";
-import Map from "views/Map.js";
 import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
 import TableList from "views/TableList.js";
 import Typography from "views/Typography.js";
 import UserProfile from "views/UserProfile.js";
+import OverviewMonthly from "views/OverviewMonthly";
 
 var routes = [
   {
-    path: "/dashboard",
-    name: "Dashboard #1",
-    rtlName: "لوحة القيادة",
+    path: "/overview-totals",
+    name: "Overview (Totals)",
     icon: "tim-icons icon-chart-pie-36",
-    component: Dashboard,
-    layout: "/admin",
+    component: OverviewTotals,
+    layout: "/stats",
   },
   {
-    path: "/boosts",
-    name: "Dashboard #2",
-    rtlName: "لوحة القيادة",
+    path: "/overview-montly",
+    name: "Overview (Monthly)",
     icon: "tim-icons icon-chart-pie-36",
-    component: Dashboard2,
-    layout: "/admin",
+    component: OverviewMonthly,
+    layout: "/stats",
   },
   // {
   //   path: "/icons",

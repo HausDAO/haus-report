@@ -14,6 +14,7 @@ import classNames from "classnames";
 
 import { chartExample1 } from "variables/charts.js";
 import { get } from "utils/requests";
+import { dataUrls } from "utils/api-data";
 
 const HausOverviewActivity = () => {
   const [bigChartData, setbigChartData] = useState("data1");
@@ -22,9 +23,7 @@ const HausOverviewActivity = () => {
 
   useEffect(() => {
     const setup = async () => {
-      const apiData = await get(
-        "https://daohaus-metadata.s3.amazonaws.com/daohaus-report-overview-dao-by-month.json"
-      );
+      const apiData = await get(dataUrls.daocounts);
 
       console.log("apiData", apiData);
       setFetchedData(apiData);

@@ -10,7 +10,21 @@
   }
 
   &:not(.card-subcategories).card-body {
-      padding-left: 0;
-      padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
+}
+
+.stat-block-stat {
+  font-size: 100px;
+  align-items: baseline;
+  line-height: 1;
+}
+.stat-block-stat.md {
+  font-size: 50px;
+}
+
+p.stat-block-avg {
+  font-size: 20px;
+  color: $blue;
 }
