@@ -3,7 +3,8 @@ import { Col, Row } from "reactstrap";
 
 import StatBlock from "components/StatBlocks/StatBlockWrapper";
 
-function TotalValue() {
+function TotalValue({ data }) {
+  console.log("data", data);
   const dataHeld = {
     stat: 1000000,
   };
@@ -13,24 +14,34 @@ function TotalValue() {
   const dataOut = {
     stat: 1000000,
   };
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <Row>
-      <Col sm="4">
+      {/* <Col sm="4">
         <StatBlock
           title="Value in Banks ($)"
           subtitle="Current"
           data={dataHeld}
           mdText
         />
+      </Col> */}
+      <Col sm="6">
+        <StatBlock
+          title="Value In ($)"
+          subtitle="Total"
+          data={{ stat: +data.total.in.toFixed(2) }}
+          mdText
+        />
       </Col>
-      <Col sm="4">
-        <StatBlock title="Value In ($)" subtitle="Total" data={dataIn} mdText />
-      </Col>
-      <Col sm="4">
+      <Col sm="6">
         <StatBlock
           title="Value Out ($)"
           subtitle="Total"
-          data={dataOut}
+          data={{ stat: +data.total.out.toFixed(2) }}
           mdText
         />
       </Col>

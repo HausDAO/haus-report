@@ -28,10 +28,14 @@ import { dataUrls } from "utils/api-data";
 
 function OverviewTotals(props) {
   const [totalsData, setTotalsData] = useState(null);
+  const [valuesData, setValuesData] = useState(null);
+
   useEffect(() => {
     const setup = async () => {
       const apiData = await get(dataUrls.daocounts);
       setTotalsData(apiData);
+      const valuesRes = await get(dataUrls.totalValues);
+      setValuesData(valuesRes);
     };
 
     setup();
@@ -53,7 +57,7 @@ function OverviewTotals(props) {
         </Row>
         <Row>
           <Col lg="12">
-            <TotalValue />
+            <TotalValue data={valuesData} />
           </Col>
 
           {/* <Col lg="4">

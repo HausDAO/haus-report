@@ -13,7 +13,7 @@ function DaoTotals({ data }) {
     const setup = async () => {
       setTotalsData({
         stat: data.totals.total,
-        avg: data.totals.avgPerMonth,
+        avg: data.totals.avgPerMonth.toFixed(2),
         avgUnit: "month",
       });
     };
