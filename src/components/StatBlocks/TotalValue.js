@@ -33,7 +33,7 @@ function TotalValue({ data }) {
         <StatBlock
           title="Value In ($)"
           subtitle="Total"
-          data={{ stat: +data.total.in.toFixed(2) }}
+          data={{ stat: +data.total.in.toFixed(0) }}
           mdText
         />
       </Col>
@@ -41,7 +41,7 @@ function TotalValue({ data }) {
         <StatBlock
           title="Value Out ($)"
           subtitle="Total"
-          data={{ stat: +data.total.out.toFixed(2) }}
+          data={{ stat: +data.total.out.toFixed(0) }}
           mdText
         />
       </Col>

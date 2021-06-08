@@ -33,7 +33,7 @@ function OverviewTotals(props) {
   useEffect(() => {
     const setup = async () => {
       const apiData = await get(dataUrls.daocounts);
-      setTotalsData(apiData);
+      setTotalsData(apiData.daos);
       const valuesRes = await get(dataUrls.totalValues);
       setValuesData(valuesRes);
     };
