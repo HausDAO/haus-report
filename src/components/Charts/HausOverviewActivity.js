@@ -16,7 +16,7 @@ import { chartExample1 } from "variables/charts.js";
 import { get } from "utils/requests";
 import { dataUrls } from "utils/api-data";
 
-const HausOverviewActivity = () => {
+const HausOverviewActivity = ({ label, entity }) => {
   const [bigChartData, setbigChartData] = useState("data1");
   const [fetchedData, setFetchedData] = useState({});
   const [activeData, setActiveData] = useState({});
@@ -24,11 +24,9 @@ const HausOverviewActivity = () => {
   useEffect(() => {
     const setup = async () => {
       const apiData = await get(dataUrls.daocounts);
-
-      console.log("apiData", apiData);
-      setFetchedData(apiData);
-      setbigChartData("xdai");
-      setActiveData(preppedData(apiData.xdai));
+      setFetchedData(apiData[entity]);
+      setbigChartData("total");
+      setActiveData(preppedData(apiData[entity].total));
     };
 
     setup();
@@ -39,7 +37,7 @@ const HausOverviewActivity = () => {
       labels: Object.keys(data).map((monthYear) => monthYear),
       datasets: [
         {
-          label: "daos summoned",
+          label: label,
           fill: true,
           borderColor: "#4ebd9e",
           borderWidth: 2,
@@ -69,13 +67,30 @@ const HausOverviewActivity = () => {
         <Row>
           <Col className="text-left" sm="6">
             <h5 className="card-category">ALL DAOs</h5>
-            <CardTitle tag="h2">DAOs Summoned</CardTitle>
+            <CardTitle tag="h2">{label}</CardTitle>
           </Col>
           <Col sm="6">
             <ButtonGroup
               className="btn-group-toggle float-right"
               data-toggle="buttons"
             >
+              <Button
+                tag="label"
+                className={classNames("btn-simple", {
+                  active: bigChartData === "total",
+                })}
+                color="info"
+                id="0"
+                size="sm"
+                onClick={() => setBgChartData("total")}
+              >
+                <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                  Total
+                </span>
+                <span className="d-block d-sm-none">
+                  <i className="tim-icons icon-single-02" />
+                </span>
+              </Button>
               <Button
                 color="info"
                 id="2"
@@ -100,9 +115,9 @@ const HausOverviewActivity = () => {
                 size="sm"
                 tag="label"
                 className={classNames("btn-simple", {
-                  active: bigChartData === "main",
+                  active: bigChartData === "mainnet",
                 })}
-                onClick={() => setBgChartData("main")}
+                onClick={() => setBgChartData("mainnet")}
               >
                 <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
                   Mainnet
@@ -126,23 +141,6 @@ const HausOverviewActivity = () => {
                 </span>
                 <span className="d-block d-sm-none">
                   <i className="tim-icons icon-tap-02" />
-                </span>
-              </Button>
-              <Button
-                tag="label"
-                className={classNames("btn-simple", {
-                  active: bigChartData === "total",
-                })}
-                color="info"
-                id="0"
-                size="sm"
-                onClick={() => setBgChartData("total")}
-              >
-                <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                  Total
-                </span>
-                <span className="d-block d-sm-none">
-                  <i className="tim-icons icon-single-02" />
                 </span>
               </Button>
             </ButtonGroup>

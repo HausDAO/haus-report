@@ -26,7 +26,19 @@ function OverviewMonthly(props) {
       <div className="content">
         <Row>
           <Col xs="12">
-            <HausOverviewActivity />
+            <HausOverviewActivity label="DAOs Summoned" entity="moloches" />
+          </Col>
+          <Col xs="12">
+            <HausOverviewActivity
+              label="Proposals Submitted"
+              entity="proposals"
+            />
+          </Col>
+          <Col xs="12">
+            <HausOverviewActivity label="Members Added" entity="members" />
+          </Col>
+          <Col xs="12">
+            <HausOverviewActivity label="Minions Added" entity="minions" />
           </Col>
         </Row>
       </div>
