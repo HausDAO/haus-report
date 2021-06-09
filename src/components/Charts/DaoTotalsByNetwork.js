@@ -18,7 +18,7 @@ function DaoTotalsByNetwork({ data }) {
         labels: ["Mainnet", "xDai", "Polygon"],
         datasets: [
           {
-            data: [data.totals.main, data.totals.xdai, data.totals.matic],
+            data: [data.totals.mainnet, data.totals.xdai, data.totals.matic],
             backgroundColor: [
               "rgba(255, 99, 132, 0.5)",
               "rgba(54, 162, 235, 0.5)",

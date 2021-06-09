@@ -3,7 +3,6 @@ import { Card, CardBody, CardHeader, CardTitle, Col, Row } from "reactstrap";
 import { numberWithCommas } from "utils/general";
 
 const StatBlock = ({ title, subtitle, data, mdText }) => {
-  console.log("title", title, data);
   return (
     <Card>
       <CardHeader>

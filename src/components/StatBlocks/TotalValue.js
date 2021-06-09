@@ -4,17 +4,6 @@ import { Col, Row } from "reactstrap";
 import StatBlock from "components/StatBlocks/StatBlockWrapper";
 
 function TotalValue({ data }) {
-  console.log("data", data);
-  const dataHeld = {
-    stat: 1000000,
-  };
-  const dataIn = {
-    stat: 1000000,
-  };
-  const dataOut = {
-    stat: 1000000,
-  };
-
   if (!data) {
     return null;
   }

@@ -22,18 +22,23 @@ import DaoTotals from "components/StatBlocks/DaoTotals";
 import DaoTotalsByType from "components/Charts/DaoTotalByType";
 import DaoTotalsByNetwork from "components/Charts/DaoTotalsByNetwork";
 import TotalValue from "components/StatBlocks/TotalValue";
-import HausOverviewActivity from "components/Charts/HausOverviewActivity";
 import { get } from "utils/requests";
 import { dataUrls } from "utils/api-data";
 
 function OverviewTotals(props) {
   const [totalsData, setTotalsData] = useState(null);
+  // const [proposalsData, setProposalsData] = useState(null);
+  // const [mebersData, setMembersData] = useState(null);
   const [valuesData, setValuesData] = useState(null);
 
   useEffect(() => {
     const setup = async () => {
       const apiData = await get(dataUrls.daocounts);
-      setTotalsData(apiData.daos);
+
+      console.log("apiData", apiData);
+      setTotalsData(apiData);
+      // setProposalsData(apiData.proposals);
+      // setMembersData(apiData.members);
       const valuesRes = await get(dataUrls.totalValues);
       setValuesData(valuesRes);
     };
@@ -46,23 +51,30 @@ function OverviewTotals(props) {
       <div className="content">
         <Row>
           <Col lg="4">
-            <DaoTotals data={totalsData} />
+            <DaoTotals data={totalsData?.moloches} title="DAOs Summoned" />
           </Col>
           <Col lg="4">
-            <DaoTotalsByNetwork data={totalsData} />
+            <DaoTotalsByNetwork data={totalsData?.moloches} />
           </Col>
           <Col lg="4">
-            <DaoTotalsByType data={totalsData} />
+            <DaoTotalsByType data={totalsData?.moloches} />
           </Col>
         </Row>
         <Row>
           <Col lg="12">
             <TotalValue data={valuesData} />
           </Col>
-
-          {/* <Col lg="4">
-            <DaoTotalsByNetwork />
-          </Col> */}
+        </Row>
+        <Row>
+          <Col lg="4">
+            <DaoTotals data={totalsData?.proposals} title="Proposals" />
+          </Col>
+          <Col lg="4">
+            <DaoTotals data={totalsData?.members} title="Members" />
+          </Col>
+          <Col lg="4">
+            <DaoTotals data={totalsData?.minions} title="Minions" />
+          </Col>
         </Row>
       </div>
     </>

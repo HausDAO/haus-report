@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import StatBlock from "components/StatBlocks/StatBlockWrapper";
 
-function DaoTotals({ data }) {
+function DaoTotals({ data, title }) {
   const [totalsData, setTotalsData] = useState({
     stat: "",
     avg: "",
@@ -23,7 +23,7 @@ function DaoTotals({ data }) {
     }
   }, [data]);
 
-  return <StatBlock title="DAOs Summoned" subtitle="Total" data={totalsData} />;
+  return <StatBlock title={title} subtitle="Total" data={totalsData} />;
 }
 
 export default DaoTotals;

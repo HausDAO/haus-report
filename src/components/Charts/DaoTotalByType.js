@@ -8,14 +8,12 @@ function DaoTotalsByType({ data }) {
 
   const options = {
     legend: {
-      // display: false,
       position: "bottom",
     },
   };
 
   useEffect(() => {
     const setup = async () => {
-      console.log("data", data);
       const purps = [
         "Clubs",
         "Grants",
