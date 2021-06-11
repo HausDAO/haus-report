@@ -16,7 +16,6 @@
 
 */
 import OverviewTotals from "views/OverviewTotals.js";
-import DaosInsights from "views/DaoInsights";
 import ProposalInsights from "views/ProposalInsights";
 import MemberInsights from "views/MemberInsights";
 import BoostInsights from "views/BoostInsights";
@@ -27,13 +26,6 @@ var routes = [
     name: "Overview",
     icon: "tim-icons icon-chart-pie-36",
     component: OverviewTotals,
-    layout: "/stats",
-  },
-  {
-    path: "/daos",
-    name: "Daos",
-    icon: "tim-icons icon-chart-pie-36",
-    component: DaosInsights,
     layout: "/stats",
   },
   {

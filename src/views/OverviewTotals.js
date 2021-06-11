@@ -16,13 +16,15 @@
 
 */
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 
 import DaoTotals from "components/StatBlocks/DaoTotals";
 import TotalValue from "components/StatBlocks/TotalValue";
 import { get } from "utils/requests";
 import { dataUrls } from "utils/api-data";
+import HausOverviewActivity from "components/Charts/HausOverviewActivity";
+import DaoTotalsByNetwork from "components/Charts/DaoTotalsByNetwork";
+import DaoTotalsByType from "components/Charts/DaoTotalByType";
 
 function OverviewTotals(props) {
   const [totalsData, setTotalsData] = useState(null);
@@ -48,17 +50,11 @@ function OverviewTotals(props) {
     <>
       <div className="content">
         <Row>
-          <Col lg="4" className="mb-4">
+          <Col xs="8">
+            <HausOverviewActivity label="DAOs Summoned" entity="moloches" />
+          </Col>
+          <Col xs="4">
             <DaoTotals data={totalsData?.moloches} title="DAOs Summoned" />
-            <Link to="daos">more dao insights</Link>
-          </Col>
-          <Col lg="4">
-            <DaoTotals data={totalsData?.proposals} title="Proposals" />
-            <Link to="proposals">More proposal insights</Link>
-          </Col>
-          <Col lg="4">
-            <DaoTotals data={totalsData?.members} title="Members" />
-            <Link to="members">More member insights</Link>
           </Col>
         </Row>
         <Row>
@@ -67,13 +63,15 @@ function OverviewTotals(props) {
           </Col>
         </Row>
         <Row>
-          <Col lg="4">
-            <DaoTotals data={boostDiscordData?.boosts} title="Boosts" />
-            <Link to="boosts">More boost insights</Link>
+          <Col xs="4">
+            <DaoTotalsByNetwork data={totalsData?.moloches} />
           </Col>
-          <Col lg="4">
-            <DaoTotals data={totalsData?.minions} title="Minions Summoned" />
+          <Col xs="4">
+            <DaoTotalsByType data={totalsData?.moloches} />
           </Col>
+        </Row>
+
+        <Row>
           <Col lg="4">
             <DaoTotals
               data={boostDiscordData?.discord}

@@ -4,6 +4,7 @@ import { Row, Col } from "reactstrap";
 import HausOverviewActivity from "components/Charts/HausOverviewActivity";
 import { get } from "utils/requests";
 import { dataUrls } from "utils/api-data";
+import DaoTotals from "components/StatBlocks/DaoTotals";
 
 function MemberInsights(props) {
   const [totalsData, setTotalsData] = useState(null);
@@ -20,8 +21,11 @@ function MemberInsights(props) {
     <>
       <div className="content">
         <Row>
-          <Col xs="12">
+          <Col xs="8">
             <HausOverviewActivity label="Members Added" entity="members" />
+          </Col>
+          <Col lg="4">
+            <DaoTotals data={totalsData?.members} title="Members" />
           </Col>
         </Row>
       </div>
