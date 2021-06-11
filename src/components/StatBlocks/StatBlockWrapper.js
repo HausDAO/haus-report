@@ -4,7 +4,7 @@ import { numberWithCommas } from "utils/general";
 
 const StatBlock = ({ title, subtitle, data, mdText }) => {
   return (
-    <Card>
+    <Card className="mb-3">
       <CardHeader>
         <Row>
           <Col className="text-left">

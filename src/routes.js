@@ -16,31 +16,48 @@
 
 */
 import OverviewTotals from "views/OverviewTotals.js";
-import Dashboard from "views/Dashboard.js";
-import Dashboard2 from "views/Dashboard2";
-import Icons from "views/Icons.js";
-import Notifications from "views/Notifications.js";
-import Rtl from "views/Rtl.js";
-import TableList from "views/TableList.js";
-import Typography from "views/Typography.js";
-import UserProfile from "views/UserProfile.js";
-import OverviewMonthly from "views/OverviewMonthly";
+import DaosInsights from "views/DaoInsights";
+import ProposalInsights from "views/ProposalInsights";
+import MemberInsights from "views/MemberInsights";
+import BoostInsights from "views/BoostInsights";
 
 var routes = [
   {
     path: "/overview-totals",
-    name: "Overview (Totals)",
+    name: "Overview",
     icon: "tim-icons icon-chart-pie-36",
     component: OverviewTotals,
     layout: "/stats",
   },
   {
-    path: "/overview-montly",
-    name: "Overview (Monthly)",
+    path: "/daos",
+    name: "Daos",
     icon: "tim-icons icon-chart-pie-36",
-    component: OverviewMonthly,
+    component: DaosInsights,
     layout: "/stats",
   },
+  {
+    path: "/proposals",
+    name: "Proposals",
+    icon: "tim-icons icon-chart-pie-36",
+    component: ProposalInsights,
+    layout: "/stats",
+  },
+  {
+    path: "/members",
+    name: "Members",
+    icon: "tim-icons icon-chart-pie-36",
+    component: MemberInsights,
+    layout: "/stats",
+  },
+  {
+    path: "/boosts",
+    name: "Boosts",
+    icon: "tim-icons icon-chart-pie-36",
+    component: BoostInsights,
+    layout: "/stats",
+  },
+
   // {
   //   path: "/icons",
   //   name: "Icons",
