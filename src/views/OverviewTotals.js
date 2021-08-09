@@ -41,7 +41,7 @@ function OverviewTotals(props) {
 
       setTotalsData(apiData);
       setBoostDiscordData(apiBoostData);
-      const valuesRes = await get(dataUrls.totalValues);
+      const valuesRes = await get(`${dataUrls.totalValues}?rand=${rand}`);
       setValuesData(valuesRes);
     };
 
