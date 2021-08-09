@@ -23,7 +23,8 @@ const HausOverviewActivity = ({ label, entity }) => {
 
   useEffect(() => {
     const setup = async () => {
-      const apiData = await get(dataUrls.daocounts);
+      const rand = new Date().getTime();
+      const apiData = await get(`${dataUrls.daocounts}?rand=${rand}`);
       setFetchedData(apiData[entity]);
       setbigChartData("total");
       setActiveData(preppedData(apiData[entity].total));

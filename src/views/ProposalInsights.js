@@ -11,7 +11,8 @@ function ProposalInsights(props) {
 
   useEffect(() => {
     const setup = async () => {
-      const apiData = await get(dataUrls.daocounts);
+      const rand = new Date().getTime();
+      const apiData = await get(`${dataUrls.daocounts}?rand=${rand}`);
       setTotalsData(apiData);
     };
 

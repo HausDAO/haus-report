@@ -12,8 +12,11 @@ function BoostInsights(props) {
 
   useEffect(() => {
     const setup = async () => {
-      const apiData = await get(dataUrls.daocounts);
-      const apiBoostData = await get(dataUrls.boostDiscordCounts);
+      const rand = new Date().getTime();
+      const apiData = await get(`${dataUrls.daocounts}?rand=${rand}`);
+      const apiBoostData = await get(
+        `${dataUrls.boostDiscordCounts}?rand=${rand}`
+      );
 
       setTotalsData(apiData);
       setBoostDiscordData(apiBoostData);
